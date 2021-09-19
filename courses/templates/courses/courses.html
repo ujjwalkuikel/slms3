@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+{% for standard in  standards %}
+   <a href="{%url 'courses:subject_list' slug=standard.slug%}"> {{standard.name}}</a><br><br><br>
+{% endfor %}
+
+
+<h1>This could be</h1>
+
+
+{{user.all_users.class_list}}
+
+
+{% if user.all_users.user_type == 'teacher' or user.is_superuser %}
+     <h3>Am i teacher or admin</h3>      
+{% endif %}
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ user }}
+{% endblock%}
+
+
+
+{% block body%}
+
+    <p>Username:{{user}}</p>
+    <p>Name:{{user.first_name}} {{user.last_name}} </p>
+    
+    <p>Email:{{user.email}}</p>
+
+    <p>Class:{{user.all_users.class_list}}</p>
+    <p>Bio:{{user.all_users.bio}}</p>
+    
+    <img src="media/Images/User_Profile_Pictures/{{user}}.jpg"  width="240" height="320">
+    
+
+
+{% endblock %}

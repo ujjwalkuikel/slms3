@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><br> <p>Created by: {{lessons.created_by}} on {{lessons.created_at}}</p><br><br>
+<a href="{% url 'courses:lesson_update' standard=lessons.Standard.slug subject=lessons.subject.slug slug=lessons.slug %}">Update</a>
+<a href="{% url 'courses:lesson_delete' standard=lessons.Standard.slug subject=lessons.subject.slug slug=lessons.slug %}">Delete</a>
+{% endblock %}
