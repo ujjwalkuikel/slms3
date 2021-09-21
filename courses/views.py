@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 class StandardListView(ListView):
     context_object_name = 'standards'
     model = Standard
-    template_name = 'courses/courses.html'
+    template_name = 'courses/standard_list_view.html'
 
 
 

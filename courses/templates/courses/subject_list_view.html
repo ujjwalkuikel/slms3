@@ -6,7 +6,7 @@
 
 
 {% for subject in  standards.subjects.all%}
-    <br><br> <a href="{% url 'courses:lesson_list' slug=subject.slug standard=standards.slug%}"  > {{subject.name}}</a><br>
+    <br><br> <p > {{subject.name}}</p><br>
        <p> {{subject.description|truncatechars:75}}<p><br><br>
 
 {% endfor %}

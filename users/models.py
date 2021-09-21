@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import os
+from courses.models import *
 # Create your models here.
 
 
@@ -16,7 +17,6 @@ def path_and_rename(instance, filename):
 #user models
 class all_users(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-
     bio = models.CharField(max_length=100,blank=True)
     profile_pic = models.ImageField(upload_to= path_and_rename , verbose_name="profile_picture", blank=True)
 
@@ -27,7 +27,7 @@ class all_users(models.Model):
         (student,'student'),  
     ]
     user_types = models.CharField(max_length=10, choices=user_types,default=student)
-
+    
 
     class5 = 'class5'
     class6 = 'class6'

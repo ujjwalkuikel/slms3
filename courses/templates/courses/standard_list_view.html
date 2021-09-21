@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block body %}
 
-
-
+<p>{{request.user.all_users.class_list}}</p>
 
 {% for standard in  standards %}
-   <a href="{%url 'courses:subject_list' slug=standard.slug%}"> {{standard.name}}</a><br><br><br>
+      {% if standard.name == user.all_users.class_list %}
+   <a> {{standard.name}}</a><br><br><br>
+{% endif %}
 {% endfor %}
 
 

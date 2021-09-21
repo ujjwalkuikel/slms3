@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from courses.models import Standard, Subject, Lesson
-from .models import all_users
+
 # Create your views here.
 def index(request):
     if request.user.is_anonymous:
@@ -23,7 +23,6 @@ def index(request):
 
 def register(request):
     registered = False
-
     if request.method == "POST":
         user_form = UserForm(data=request.POST)
         profile_form = all_users(data=request.POST)

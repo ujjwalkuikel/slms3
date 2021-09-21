@@ -14,32 +14,24 @@
     <h1>Thank you for registering</h1>
   {% else %}
       <h3>Fill the form: </h3>
-      <div class="container col-md-4" >
-      {% csrf_token %}
+      <div class="container col-md-3" >
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ user_form.username.label}}
-        {{ user_form.username}}<br><br>
+        {{ user_form.username}}<br>
          {{ user_form.first_name.label}}
-        {{ user_form.first_name}}<br><br>
+        {{ user_form.first_name}}<br>
+        
          {{ user_form.last_name.label}}
-        {{ user_form.last_name}}<br><br>
+         {{ user_form.last_name}}<br>
          {{ user_form.email.label}}
-        {{ user_form.email}}<br><br>
+        {{ user_form.email}}<br>
          {{ user_form.password1.label}}
-         {{ user_form.password1}}<br><br>
+         {{ user_form.password1}}<br>
          {{ user_form.password2.label}}
-         {{ user_form.password2}}<br><br>
-
-         {{ profile_form.bio.label }}
-         {{ profile_form.bio}}<br><br>
-         {{ profile_form.profile_pic.label }}
-         {{ profile_form.profile_pic}}<br><br>
-         {{ profile_form.class_list.label }}
-         {{ profile_form.class_list}}<br><br>
-
-
-
+         {{ user_form.password2}}<br>
+         
+        {{ profile_form.as_p }}
 
 
         
@@ -49,7 +41,6 @@
         </div>
         </div>
       </form></div>
-      <div class="container col-md-3"><p class="h6 my-2">Not registered yet? <a href="/user_login"> Login here</a>!</p></div>
   {% endif %}
 
 {% endblock  %}
