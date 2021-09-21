@@ -2,47 +2,137 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet"> <!-- font end -->
+  <!-- Font End -->
+
 </head>
+<!-- Style Start -->
+<style>
+  body {
+    background: #FFE3DE;
+  }
 
- {% if registered %}
-    <h1>Thank you for registering</h1>
-  {% else %}
-      <h3>Fill the form: </h3>
-      <div class="container col-md-3" >
-      <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ user_form.username.label}}
-        {{ user_form.username}}<br>
-         {{ user_form.first_name.label}}
-        {{ user_form.first_name}}<br>
-        
-         {{ user_form.last_name.label}}
-         {{ user_form.last_name}}<br>
-         {{ user_form.email.label}}
-        {{ user_form.email}}<br>
-         {{ user_form.password1.label}}
-         {{ user_form.password1}}<br>
-         {{ user_form.password2.label}}
-         {{ user_form.password2}}<br>
-         
-        {{ profile_form.as_p }}
+  .form {
+    margin-top: 3% !important;
+    width: fit-content;
+    height: fit-content;
+    background: #03506F;
+    border-radius: 8px;
+    box-shadow: 0 0 40px -10px #000;
+    margin: calc(50vh - 220px) auto;
+    padding: 3% 3%;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+ 
+  h2,h1{
+    margin-top: 3%;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    color: #0A043C;
+  }
+  input {
+    width: 100%;
+    padding: 2%;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    resize: none;
+    border: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    transition: all .3s;
+    color: #A3DDCB;
+    border-bottom: 2px solid #A3DDCB
+  }
+
+  input:focus {
+    border-bottom: 2px solid #0A043C
+  }
+  p:before {
+    content: attr(type);
+    display: block;
+    margin: 28px 0 0;
+    font-size: 14px;
+    color: #A3DDCB
+  }
+
+  .button1 {
+    background-color: #03506F;
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    margin-top:3%;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    color: #A3DDCB;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  .button1:hover {
+    color: #A3DDCB;
+    background-color: #0A043C;
+  }
+  @media all and (max-width:30em) {
+    .form-control
+    {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    }
+    .button1 {
+      width: 50%;
+      display: block;
+      margin: 0.4em auto;
+    }
+  }
+
+</style>
+<!-- style close -->
+{% if registered %}
+<div class="container">
+<h1>Thank You For Registering</h1>
+</div>
+{% else %}
+
+<div class="container">
+<h1>Fill The Form</h1>
+</div>
+<form class="form" method="post" enctype="multipart/form-data">
 
 
-        
-        <div class="row justify-content-center">
-        <div class="col-md-6">
-        <input type="submit" value="Register" class="btn btn-primary btn-block">
-        </div>
-        </div>
-      </form></div>
-  {% endif %}
+  {% csrf_token %}
 
-{% endblock  %}
+  <p type="{{ user_form.username.label}}:">{{ user_form.username}}</p>
+  <p type="{{ user_form.first_name.label}}:">{{ user_form.first_name}}</p>
+  <p type="{{ user_form.last_name.label}}:">{{ user_form.last_name}}</p>
+  <p type="{{ user_form.email.label}}:">{{ user_form.email}}</p>
+  <p type="{{ user_form.password1.label}}:">{{ user_form.password1}}</p>
+  <p type="{{ user_form.password2.label}}:">{{ user_form.password2}}</p>
+
+  <p>{{ profile_form.as_p }}</p>
+
+  <input class="button1"  type="submit" value="Finish" class="btn btn-primary btn-block">
+
+</form>
+
+{% endif %}
+
+{% endblock %}
 
 </html>

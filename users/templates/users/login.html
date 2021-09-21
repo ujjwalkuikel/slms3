@@ -1,44 +1,115 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-</head>
-<body >
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet"> <!-- font end -->
+  <!-- Font-End -->
+  </head>
+
+<style>
+  body {
+    background-color: #FFE3DE;
+  }
+
+  .login_head {
+    margin-top: 10%;
+  }
+  a{
+   color: #084177; 
+   text-decoration: none;
+   font-size:small;
+  }
+  a:hover
+  {
+    color: #A3DDCB;
+  }
+  label{
+    color: #03506F;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  h1 {
+    color: #0A043C;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  .button1 {
+    background-color: #03506F;
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    margin-top:3%;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #A3DDCB;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  .button1:hover {
+    color: #A3DDCB;
+    background-color: #0A043C;
+  }
+  @media all and (max-width:30em) {
+    .form-control
+    {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    }
+    .button1 {
+      width: 50%;
+      display: block;
+      margin: 0.4em auto;
+    }
+  }
+
+</style>
+<!-- Color Pallete https://colorhunt.co/palette/0a043c03506fa3ddcbffe3de -->
+
+<body>
   <form action="{% url 'user_login' %}" method="post">
     <div class="form-group">
 
+      {% csrf_token %}
+      <div class="container col-md-3 t-4 login_head">
+        <div class="row">
 
-    {% csrf_token %}
-    
-    <div class="container col-md-3" >
-      <div class="row">
+          <h1 class="h3 mb-3 font-weight-normal text-center">User Login</h1>
+          <label for="username">Username:</label>
+          <input type="text" name="username" class="form-control">
 
-        <h1 class="h3 mb-3 font-weight-normal text-center">User Login</h1>
-    <label for="username">Username:</label>
-    <input type="text" name="username" placeholder="Username" class="form-control">
+          <label for="password">Password:</label>
+          <input type="password" name="password" class="form-control">
+        </div>
+        <div class="row justify-content-center">
+          <input class="button1" type="submit" value="Login" class="btn btn-success btn-lg mt-3 col-md-3">
+        </div>
 
-    <label for="password">Password:</label>
-    <input type="password" name="password" class="form-control">
+
+      </div>
     </div>
-    <div class="row justify-content-center">
-        <input type="submit" value="Login" class="btn btn-success btn-lg mt-3 col-md-3">
-    </div>
-   
+  </form>
 
+  <div class="container col-md-3">
+    <a  href="/register">Register</a>
   </div>
-    </div>
-</form>
-<div class="container col-md-3"><p class="h6 my-2">Not registered yet? <a href="/register"> Register here</a>!</p></div>
 
 </body>
+
 </html>
 
 
 
 
-{% endblock  %}
+{% endblock %}

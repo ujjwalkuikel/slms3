@@ -7,17 +7,77 @@
 
 
 {% block body%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Style -->
+<style>
+     h2,h1{
+    margin-top: 3%;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    color: #0A043C;
+  }
+    .card {
+        background-color: #03506F;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+    }
 
-    <p>Username:{{user}}</p>
-    <p >Name:{{user.first_name}} {{user.last_name}} </p>
-    
-    <p>Email:{{user.email}}</p>
+    th,
+    td {
+        color: #A3DDCB;
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #0A043C;
+    }
+</style>
+<!-- Style End -->
 
-    <p>Class:{{user.all_users.class_list}}</p>
-    <p>Bio:{{user.all_users.bio}}</p>
-    
-    <img src="media/Images/User_Profile_Pictures/{{user}}.jpg"  width="240" height="320">
-    
 
+<body>
+
+    <h2 style="text-align:center">User Profile Card</h2>
+
+    <div class="card">
+        <img  src="media/Images/User_Profile_Pictures/{{user}}.jpg" style="width: 80%; margin: auto; margin-top: 5%;">
+        <h1>{{user}}</h1>
+
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Name:</th>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td  colspan="2">{{user.email}}</td>
+                </tr>
+                <tr>
+                    <th>Bio:</th>
+                    <td colspan="2">{{user.all_users.bio}}</td>
+                </tr>
+                <tr>
+                    <th>Class:</th>
+                    <td colspan="2">{{user.all_users.class_list}}</td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+
+</body>
+
+    <!-- <img src="media/Images/User_Profile_Pictures/{{user}}.jpg"  width="240" height="320">  -->
 
 {% endblock %}
